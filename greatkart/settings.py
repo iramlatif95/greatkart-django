@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'category.context_processor.menu_links', # this is the context processor we add this menu links is used in all the template so whnever we call it d
+                'carts.context_processor.counter', # this is inside the cartapp
             ],
         },
     },
