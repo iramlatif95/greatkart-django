@@ -33,6 +33,17 @@
 <p>{{single_product.description}}</p>
 
 
+<p>
+Debug variations:
+{% for v in single_product.variation_set.all %}
+    {{ v.variation_category }} - {{ v.variation_value }} |
+{% empty %}
+    No variations found.
+{% endfor %}
+</p>
+
+
+
 <hr>
 	<div class="row">
 		<div class="item-option-select">
