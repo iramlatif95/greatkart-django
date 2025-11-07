@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'category',
     'accounts',
     'carts',
+    'orders',
     
 ]
 
@@ -138,4 +139,13 @@ STATICFILES_DIRS = [
 # media file
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# this is the django messsages coopy this  from the documen
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+    
+}
 

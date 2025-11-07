@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 
-class MyAccountManager(BaseUserManager):
+class MyAccountManager(BaseUserManager): #cutom modle
     def create_user(self,first_name,last_name, username,email,password=None): # this is for creating the user  User can create an account without password temporarily But later password must be set Django will not crash if password is not given initially summarizze this line
 
         if not email:
