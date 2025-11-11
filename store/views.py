@@ -5,6 +5,7 @@ from carts.views import _cart_id
 from carts.views import CartItem
 from django.core.paginator import EmptyPage,PageNotAnInteger, Paginator
 from django.db.models import Q # this for the or query
+# This is a test change
 
 
 

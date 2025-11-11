@@ -1,11 +1,13 @@
-
-from django.http import HttpResponse
-from django.shortcuts import render,redirect
-from carts.models import CartItem
-from.forms import OrderForm
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from carts.models import Cart, CartItem
+from .forms import OrderForm
+from .models import Order
 import datetime
-from.models import Order
 
+def payments(request):
+    return render(request,'payments.html')
 
 def place_order(request, total=0, quantity=0,):
     current_user = request.user
@@ -53,11 +55,20 @@ def place_order(request, total=0, quantity=0,):
             order_number = current_date + str(data.id)
             data.order_number = order_number
             data.save()
-            return redirect('checkout')
-        else:
-            return redirect('checkout')
+
+            order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
+            context = {
+                'order': order,
+                'cart_items': cart_items,
+                'total': total,
+                'tax': tax,
+                'grand_total': grand_total,
+            }
+            return render(request, 'payments.html', context)
+    else:
+        return redirect('checkout')
 
 
-           
-            
-           
+
+
+
